@@ -1,22 +1,15 @@
 function addBorder(picture: string[]): string[] {
-    const stringLength = picture[0].length;
-    let border = '';
+    const wall = '*'.repeat(picture[0].length + 2);
 
-    // Let's create our borders
-    for (let i = 0; i < stringLength + 2; i++) {
-        border += '*';
-    }
-
-    // Let's pad our picture
     picture = picture.map((item) => {
         return item.replace(/(\w+)/gi, '*$1*');
     });
 
-    picture.unshift(border);
-    picture.push(border);
+    picture.unshift(wall);
+    picture.push(wall);
     
     return picture;
 }
 
-console.log(addBorder(["abc", "ded"]));
-console.log(addBorder(["abcdef", "ghijkl"]));
+console.log(addBorder(["abc", "ded"])); // Expected: [ '*****', '*abc*', '*ded*', '*****' ] 
+console.log(addBorder(["abcdef", "ghijkl"])); // Expected: [ '********', '*abcdef*', '*ghijkl*', '********' ] 
